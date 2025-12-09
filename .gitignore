@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Project-specific: Large Data Files
+data/usda_fdc/**/*.csv
+data/usda_fdc/**/*.txt
+data/usda_fdc/**/*.xlsx
+data/usda_fdc/**/*.zip
+
+# Keep structure but ignore data
+data/usda_fdc/*
+!data/usda_fdc/.gitkeep
+
+# Receipt images (keep a few samples, ignore the rest)
+data/receipts/images/*.jpg
+data/receipts/images/*.jpeg
+data/receipts/images/*.png
+!data/receipts/images/grocery.jpeg
+!data/receipts/images/0.jpg
+
+# Receipt annotations
+data/receipts/boxes/
+data/receipts/*.csv
+data/receipts/*.xml
+
+# Flask uploads
+uploads/
+*.jpg
+*.jpeg
+*.png
+
+# Model cache
+.cache/
+*.pt
+*.pth
+*.bin
+*.onnx
+
+# Logs
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Sentence transformers cache
+sentence_transformers/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Large files
+*.zip
+*.tar.gz
+*.rar
+

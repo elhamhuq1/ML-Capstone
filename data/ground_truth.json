@@ -1,0 +1,451 @@
+{
+  "0.jpg": {
+    "shop": "WALMART",
+    "date": "08/20/10 13:12:01",
+    "total": "TOTAL 5.11",
+    "items": [
+      {
+        "item_name": "FRAP",
+        "original_text": "FRAP 001200010451 F 5.48 N",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "BANANAS",
+        "original_text": "BANANAS 000000004011KF 0.41 lb @ 1 lb /0.49 0.20 N",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 173944,
+        "usda_description": "Bananas, raw",
+        "notes": "Auto-annotated with confidence 0.844"
+      }
+    ]
+  },
+  "1.jpg": {
+    "shop": "TRADER JOE'S",
+    "date": "06-28-2014 12:34PM",
+    "total": "TOTAL $38.68",
+    "items": [
+      {
+        "item_name": "MINI-PEARL",
+        "original_text": "MINI-PEARL TOMATOES.. 2.49",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 321360,
+        "usda_description": "Tomatoes, grape, raw",
+        "notes": "Auto-annotated with confidence 0.524"
+      },
+      {
+        "item_name": "PKG",
+        "original_text": "PKG SHREDDED MOZZARELLA LITE T 3.99",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 171244,
+        "usda_description": "Cheese, mozzarella, low moisture, part-skim",
+        "notes": "Auto-annotated with confidence 0.783"
+      },
+      {
+        "item_name": "EGGS",
+        "original_text": "EGGS 1 DOZ ORGANIC BROWN. 3.79",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 171287,
+        "usda_description": "Egg, whole, raw, fresh",
+        "notes": "Auto-annotated with confidence 0.611"
+      },
+      {
+        "item_name": "BEANS",
+        "original_text": "BEANS GARBANZO 0.89",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 173800,
+        "usda_description": "Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids",
+        "notes": "Auto-annotated with confidence 0.669"
+      },
+      {
+        "item_name": "GROCERY",
+        "original_text": "GROCERY NON TAXABLE 0.98 2@ 0.49",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "A-AVOCADOS",
+        "original_text": "A-AVOCADOS HASS BAG 4CT 3.99",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 173573,
+        "usda_description": "Oil, avocado",
+        "notes": "Auto-annotated with confidence 0.661"
+      },
+      {
+        "item_name": "SPROUTED",
+        "original_text": "SPROUTED CA STYLE 2.99",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "BANANAS",
+        "original_text": "BANANAS ORGANIC 0.87 3EA @ 0.29/EA",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 173944,
+        "usda_description": "Bananas, raw",
+        "notes": "Auto-annotated with confidence 0.844"
+      },
+      {
+        "item_name": "CREAMY",
+        "original_text": "CREAMY SALTED PEANUT BUTTER 2.49",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 172458,
+        "usda_description": "Peanut butter, smooth, reduced fat",
+        "notes": "Auto-annotated with confidence 0.760"
+      },
+      {
+        "item_name": "WHL",
+        "original_text": "WHL WHT PITA BREAD 1.69",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 174916,
+        "usda_description": "Bread, pita, whole-wheat",
+        "notes": "Auto-annotated with confidence 0.715"
+      },
+      {
+        "item_name": "GROCERY",
+        "original_text": "GROCERY NON TAXABLE 1.38 2 2@ 0.69",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "R-CARROTS",
+        "original_text": "R-CARROTS SHREDDED 10 OZ 1.29",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 170393,
+        "usda_description": "Carrots, raw",
+        "notes": "Auto-annotated with confidence 0.815"
+      },
+      {
+        "item_name": "A-APPLE",
+        "original_text": "A-APPLE BAG JAZZ 2 LB 2.99",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 1750341,
+        "usda_description": "Apples, gala, with skin, raw",
+        "notes": "Auto-annotated with confidence 0.707"
+      },
+      {
+        "item_name": "A-PEPPER",
+        "original_text": "A-PEPPER BELL EACH XL RED 0.99",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 2258590,
+        "usda_description": "Peppers, bell, red, raw",
+        "notes": "Auto-annotated with confidence 0.679"
+      },
+      {
+        "item_name": "R-CUCUMBERS",
+        "original_text": "R-CUCUMBERS PERSIAN 1 LB 1.99",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 169225,
+        "usda_description": "Cucumber, peeled, raw",
+        "notes": "Auto-annotated with confidence 0.687"
+      },
+      {
+        "item_name": "TOMATOES",
+        "original_text": "TOMATOES CRUSHED NO SALT 1.59",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "TOMATOES",
+        "original_text": "TOMATOES WHOLE NO SALT W/BASIL 1.59",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "ORGANIC",
+        "original_text": "ORGANIC OLD FASHIONED OATMEAL 2.69",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 2346397,
+        "usda_description": "Oats, whole grain, steel cut",
+        "notes": "Auto-annotated with confidence 0.534"
+      }
+    ]
+  },
+  "10.jpg": {
+    "shop": "SPAR",
+    "date": "23.02.21 16:17",
+    "total": "TOTAL FOR 14 ITEMS 338.16",
+    "items": [
+      {
+        "item_name": "SMOKED",
+        "original_text": "SMOKED VIENNAS 500GR 33.99 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "PEALED",
+        "original_text": "PEALED PEACHES 400G 82.99 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "MILKY",
+        "original_text": "MILKY BAR CHOC 80GR 16.99 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "LAZENBY",
+        "original_text": "LAZENBY WORCESTER SALICE 125ML 17.99 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "MEDITERRANEAN",
+        "original_text": "MEDITERRANEAN MIX 1KG 44.99 *",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "SPAR",
+        "original_text": "SPAR COOKING OIL 375ML 14.99 *",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "F/L",
+        "original_text": "F/L ENGLISH CUCUMB 1'S 12.99 *",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "NESTLE",
+        "original_text": "NESTLE AERO 85GR 20.99 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "CADBURY",
+        "original_text": "CADBURY DAIRY MI 80 GR 16.99 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "CARRIER",
+        "original_text": "CARRIER BAG 24L 1\"S 0.75 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "BANANAS",
+        "original_text": "BANANAS LOOSE 17KG 0.596kg @ 15.99 R /kg 9.53 *",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "GRAPES",
+        "original_text": "GRAPES MIXED TUB TUB 24.99 *",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "TASTIC",
+        "original_text": "TASTIC RICE 500GR 11.99 *",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "BLACK",
+        "original_text": "BLACK CAT SMOOTH 270GR 27.99 A",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      }
+    ]
+  },
+  "11.jpg": {
+    "shop": "WHOLE FOODS MARKET",
+    "date": null,
+    "total": null,
+    "items": [
+      {
+        "item_name": "*WT",
+        "original_text": "*WT PLUMS BLACK CV 2.15 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* CAGE FREE ALL WHIT 3.69 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* PL TORTILLA'S 6.99 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* BLACK BEANS 1.29 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* Frozen Mangoes 16o 2.99 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 169910,
+        "usda_description": "Mangos, raw",
+        "notes": "Auto-annotated with confidence 0.889"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* Whole Strawberries 2.99 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": 327699,
+        "usda_description": "Strawberries, raw",
+        "notes": "Auto-annotated with confidence 0.811"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* OG LF COTTAGE CHEE 3.49 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* MAHI MAHI FILLETS 8.99 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "*",
+        "original_text": "* California Harvest 2.69 B",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      }
+    ]
+  },
+  "12.jpg": {
+    "shop": "WALMART",
+    "date": "10/20/07 13:48:43",
+    "total": "TOTAL 18.75",
+    "items": [
+      {
+        "item_name": "TOOTHBRUSH",
+        "original_text": "TOOTHBRUSH 003500055500 0.96 X",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "WOMEN",
+        "original_text": "WOMEN SLIPPE 009725614790 9.86 X",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      },
+      {
+        "item_name": "SW",
+        "original_text": "SW FIGURES 065356920144 6.63 X",
+        "quantity": null,
+        "unit": null,
+        "usda_fdc_id": null,
+        "usda_description": null,
+        "notes": "Extracted from Kaggle dataset - needs USDA matching"
+      }
+    ]
+  }
+}

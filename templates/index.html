@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍎 Nutrition Receipt Analyzer</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --danger-color: #f44336;
+            --warning-color: #ff9800;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .upload-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .dropzone {
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            padding: 60px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+        
+        .dropzone:hover {
+            border-color: var(--primary-color);
+            background: #f0f8ff;
+        }
+        
+        .dropzone.dragover {
+            border-color: var(--primary-color);
+            background: #e8f5e9;
+        }
+        
+        .dropzone i {
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .results-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+        }
+        
+        .macro-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .macro-card h4 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .swap-card {
+            border-left: 4px solid var(--primary-color);
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+        
+        .confidence-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .confidence-high {
+            background: #4CAF50;
+            color: white;
+        }
+        
+        .confidence-medium {
+            background: #ff9800;
+            color: white;
+        }
+        
+        .confidence-low {
+            background: #f44336;
+            color: white;
+        }
+        
+        .spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .spinner.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🍎 Nutrition Receipt Analyzer</h1>
+            <p>Upload your grocery receipt to analyze nutrition and get healthier swap suggestions</p>
+        </div>
+        
+        <!-- Upload Card -->
+        <div class="upload-card">
+            <div class="dropzone" id="dropzone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Drag & Drop Receipt Image</h3>
+                <p class="text-muted">or click to browse</p>
+                <p class="text-muted"><small>Supported: JPG, PNG (max 16MB)</small></p>
+                <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            </div>
+            
+            <!-- Loading Spinner -->
+            <div class="spinner" id="spinner">
+                <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h4 class="mt-3">Analyzing Receipt...</h4>
+                <p class="text-muted">This may take a few seconds</p>
+            </div>
+        </div>
+        
+        <!-- Results Card -->
+        <div class="results-card" id="results">
+            <h2 class="mb-4"><i class="fas fa-chart-pie"></i> Analysis Results</h2>
+            
+            <!-- Receipt Info -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <img id="receiptImage" src="" class="img-fluid rounded shadow" alt="Receipt">
+                </div>
+                <div class="col-md-6">
+                    <h3>Receipt Summary</h3>
+                    <p><strong>Items Found:</strong> <span id="numItems">0</span></p>
+                    <p><strong>Processing Time:</strong> <span id="processingTime">0</span>s</p>
+                    
+                    <!-- Macros Summary -->
+                    <div class="row mt-4">
+                        <div class="col-6 col-md-3">
+                            <div class="macro-card" style="background: linear-gradient(135deg, #FF6B6B, #FFE66D);">
+                                <h4 id="calories">0</h4>
+                                <p>Calories</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="macro-card" style="background: linear-gradient(135deg, #4ECDC4, #556270);">
+                                <h4 id="protein">0g</h4>
+                                <p>Protein</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="macro-card" style="background: linear-gradient(135deg, #95E1D3, #38EF7D);">
+                                <h4 id="carbs">0g</h4>
+                                <p>Carbs</p>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="macro-card" style="background: linear-gradient(135deg, #FFD93D, #F4A259);">
+                                <h4 id="fat">0g</h4>
+                                <p>Fat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Items Table -->
+            <h3 class="mt-5"><i class="fas fa-shopping-cart"></i> Items Found</h3>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Item</th>
+                            <th>Matched Food</th>
+                            <th>Confidence</th>
+                            <th>Calories</th>
+                            <th>Protein</th>
+                            <th>Carbs</th>
+                            <th>Fat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTable">
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Healthier Swaps -->
+            <h3 class="mt-5"><i class="fas fa-exchange-alt"></i> Healthier Swap Suggestions</h3>
+            <div id="swapsContainer">
+            </div>
+            
+            <!-- Macro Chart -->
+            <h3 class="mt-5"><i class="fas fa-chart-pie"></i> Macronutrient Breakdown</h3>
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <canvas id="macroChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <button class="btn btn-primary btn-lg" onclick="location.reload()">
+                    <i class="fas fa-redo"></i> Analyze Another Receipt
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('fileInput');
+        const spinner = document.getElementById('spinner');
+        const results = document.getElementById('results');
+        
+        // Click to browse
+        dropzone.addEventListener('click', () => fileInput.click());
+        
+        // Drag and drop handlers
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('dragover');
+        });
+        
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+        
+        // File input handler
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+        
+        function handleFile(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload an image file');
+                return;
+            }
+            
+            // Show spinner
+            dropzone.style.display = 'none';
+            spinner.classList.add('active');
+            
+            // Upload and analyze
+            const formData = new FormData();
+            formData.append('receipt', file);
+            
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert('Error: ' + data.error);
+                    location.reload();
+                } else {
+                    displayResults(data);
+                }
+            })
+            .catch(error => {
+                alert('Error: ' + error);
+                location.reload();
+            });
+        }
+        
+        function displayResults(data) {
+            // Hide spinner, show results
+            spinner.classList.remove('active');
+            results.style.display = 'block';
+            
+            // Receipt image
+            document.getElementById('receiptImage').src = data.image_url;
+            
+            // Summary
+            document.getElementById('numItems').textContent = data.num_items;
+            document.getElementById('processingTime').textContent = data.processing_time;
+            
+            // Macros
+            document.getElementById('calories').textContent = Math.round(data.macros.calories);
+            document.getElementById('protein').textContent = data.macros.protein_g.toFixed(1) + 'g';
+            document.getElementById('carbs').textContent = data.macros.carbs_g.toFixed(1) + 'g';
+            document.getElementById('fat').textContent = data.macros.fat_g.toFixed(1) + 'g';
+            
+            // Items table
+            const itemsTable = document.getElementById('itemsTable');
+            itemsTable.innerHTML = '';
+            data.items.forEach(item => {
+                const confidenceClass = item.confidence > 0.7 ? 'confidence-high' : 
+                                       item.confidence > 0.4 ? 'confidence-medium' : 'confidence-low';
+                const row = `
+                    <tr>
+                        <td>${item.original_name}</td>
+                        <td>${item.matched_food.substring(0, 50)}</td>
+                        <td><span class="confidence-badge ${confidenceClass}">${(item.confidence * 100).toFixed(0)}%</span></td>
+                        <td>${Math.round(item.calories)} kcal</td>
+                        <td>${item.protein_g.toFixed(1)}g</td>
+                        <td>${item.carbs_g.toFixed(1)}g</td>
+                        <td>${item.fat_g.toFixed(1)}g</td>
+                    </tr>
+                `;
+                itemsTable.innerHTML += row;
+            });
+            
+            // Swaps
+            const swapsContainer = document.getElementById('swapsContainer');
+            swapsContainer.innerHTML = '';
+            if (data.swaps.length === 0) {
+                swapsContainer.innerHTML = '<p class="text-muted">No healthier alternatives found. Your choices look good!</p>';
+            } else {
+                data.swaps.forEach(swap => {
+                    const swapCard = `
+                        <div class="swap-card">
+                            <h5><i class="fas fa-exchange-alt"></i> ${swap.item}</h5>
+                            <div style="white-space: pre-wrap;">${swap.formatted}</div>
+                        </div>
+                    `;
+                    swapsContainer.innerHTML += swapCard;
+                });
+            }
+            
+            // Macro chart
+            const ctx = document.getElementById('macroChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Protein', 'Carbs', 'Fat'],
+                    datasets: [{
+                        data: [data.macros.protein_g, data.macros.carbs_g, data.macros.fat_g],
+                        backgroundColor: ['#4ECDC4', '#95E1D3', '#FFD93D']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
